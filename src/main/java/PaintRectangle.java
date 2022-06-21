@@ -1,13 +1,13 @@
 import java.awt.*;
 
-public class MyRectangle {
+public class PaintRectangle {
 
     public int x;
     public int y;
     public int width;
     public int height;
 
-    public MyRectangle(int x, int y, int width, int height) {
+    public PaintRectangle(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
         this.width = width;
