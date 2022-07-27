@@ -15,7 +15,7 @@ public class PaintRectangle {
     }
 
     public void paint(Graphics g) {
-        g.setColor(Color.black);
+        g.setColor(Color.white);
         g.fillRect(this.x, this.y, this.width, this.height);
     }
 
