@@ -18,6 +18,7 @@ public class MainWindow extends JFrame {
         this.setResizable(true);
         this.setLayout(null);
 
+
         PanelWindow panelWindow = new PanelWindow(WINDOW_WIDTH, WINDOW_HEIGHT);
         this.add(panelWindow);
 

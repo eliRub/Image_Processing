@@ -7,49 +7,53 @@ import java.util.Random;
 
 public class Filters {
 
-    public Filters (BufferedImage image , int number) throws IOException {
+    public Filters (BufferedImage image , int number , File output) throws IOException {
 
         Color color1;
         int width = image.getWidth();
         int height = image.getHeight();
+        Random random = new Random();
+        int num = random.nextInt(3);
+
+        File file = new File("C:\\Users\\User\\OneDrive\\שולחן העבודה\\image\\src\\main\\java\\gal2.jpg");
+        BufferedImage image1 = ImageIO.read(file);
 
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 int pixel = image.getRGB(x,y);
                 Color color = new Color(pixel);
-                switch (number){
-                    case 1:
+                switch (number) {
+                    case 1 -> {
                         color1 = blackAndWhite(color);
-                        image.setRGB(x,y,color1.getRGB());
-                        break;
-                    case 2:
-                        image.setRGB(width -x -1 ,y , color.getRGB() );
-                        break;
-                    case 3:
+                        image1.setRGB(x, y, color1.getRGB());
+                    }
+                    case 2 -> {
+                        image1.setRGB(width - x -1 , y , color.getRGB());
+                    }
+
+                    case 3 -> {
                         color1 = colorShiftRight(color);
-                        image.setRGB(x,y,color1.getRGB());
-                        break;
-                    case 4:
+                        image1.setRGB(x, y, color1.getRGB());
+                    }
+                    case 4 -> {
                         color1 = colorShiftLeft(color);
-                        image.setRGB(x,y,color1.getRGB());
-                        break;
-                    case 5:
-                        color1 = eliminate(color);
-                        image.setRGB(x,y,color1.getRGB());
-                        break;
-                    default:
+                        image1.setRGB(x, y, color1.getRGB());
+                    }
+                    case 5 -> {
+                        color1 = eliminate(color, num);
+                        image1.setRGB(x, y, color1.getRGB());
+                    }
+                    default -> {
                         color1 = ligher(color);
-                        image.setRGB(x,y,color1.getRGB());
-                        break;
+                        image1.setRGB(x, y, color1.getRGB());
+                    }
                 }
 
 
             }
         }
-        System.out.println("d");
+        ImageIO.write(image1,"png",output);
 
-        File output = new File("C:\\Users\\User\\OneDrive\\שולחן העבודה\\image\\src\\main\\java\\image205.jpg");
-        ImageIO.write(image,"png",output);
 
     }
 
@@ -60,6 +64,7 @@ public class Filters {
         int average = (red + green + blue) / 3;
         return new Color(average , average , average);
     }
+
 
     public Color colorShiftRight (Color color){
         int red = color.getRed();
@@ -77,16 +82,13 @@ public class Filters {
         return new Color(blue , red , green);
     }
 
-    public Color eliminate (Color color){
+    public Color eliminate (Color color , int num){
 
-        Random random = new Random();
         int red = color.getRed();
         int green = color.getGreen();
         int blue = color.getBlue();
 
-       int chosen = random.nextInt(3);
-
-        return switch (chosen) {
+        return switch (num) {
             case 0 -> new Color(0, green, blue);
             case 1 -> new Color(red, 0, blue);
             default -> new Color(red, green, 0);
