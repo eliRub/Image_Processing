@@ -1,4 +1,7 @@
 import org.checkerframework.checker.units.qual.C;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,8 +9,8 @@ import java.util.Set;
 
 public class MainWindow extends JFrame {
 
-    public static final int WINDOW_WIDTH = 1000;
-    public static final int WINDOW_HEIGHT = 500;
+    public static final int WINDOW_WIDTH = 1200;
+    public static final int WINDOW_HEIGHT = 600;
 
     public MainWindow() {
         this.setVisible(true);
@@ -25,5 +28,7 @@ public class MainWindow extends JFrame {
 
     public static void main(String[] args) {
         MainWindow mainWindow = new MainWindow();
-     }
+
+    }
+
 }

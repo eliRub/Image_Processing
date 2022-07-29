@@ -26,7 +26,7 @@ public class PanelWindow extends JPanel {
         this.board = new PaintRectangle(0, 0, width, height);
 
         JButton text = new JButton("What to enter?");
-        text.setBounds(width/2-80, 15, 150, 30);
+        text.setBounds(width/2-80, 30, 150, 30);
         text.addActionListener((event) ->{
             ExplanationWindow explanationWindow = new ExplanationWindow();
         });
@@ -37,9 +37,7 @@ public class PanelWindow extends JPanel {
         this.add(fieldForUserName);
 
 
-//        fieldForUserName.setText("lie");
-
-        this.userNameToEnter = fieldForUserName.getText();
+//        this.userNameToEnter = fieldForUserName.getText();
 
 
         JButton search = new JButton("search");
@@ -58,69 +56,33 @@ public class PanelWindow extends JPanel {
 
             driver.manage().window().maximize();
 
-//            WebElement findPhoto = driver.findElement(By.className("i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s rnr61an3 s45kfl79 emlxlaya bkmhp75w spb7xbtv"));
-//
-//
-//            String src = findPhoto.getAttribute("i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s rnr61an3 s45kfl79 emlxlaya bkmhp75w spb7xbtv");
-//            BufferedImage bufferedImage = null;
-//            try {
-//                bufferedImage = ImageIO.read(new URL(src));
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
-//            File outfile = new File("saved.png");
-//            try {
-//                ImageIO.write(bufferedImage, "png", outfile);
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
-
-
-//            WebElement logo = driver.findElement(By.cssSelector("#mount_0_0_d3 > div > div:nth-child(1) > div > div.rq0escxv.l9j0dhe7.du4w35lb > div > div > div.j83agx80.cbu4d94t.d6urw2fd.dp1hu0rb.l9j0dhe7.du4w35lb > div.j83agx80.cbu4d94t.dp1hu0rb > div > div > div:nth-child(1) > div.rq0escxv.l9j0dhe7.du4w35lb.j83agx80.pfnyh3mw.taijpn5t.gs1a9yip.owycx6da.btwxx1t3.ihqw7lf3.cddn0xzi > div > div > div > div.mpmpiqla.aovbcota.fln0ibad.anxc55fr.aw8vmcxp.l54s1dlg.a0ua4ts5.rmzkg9qa > div > a > div > div"));
-//            String logoSRC = logo.getAttribute("src");
-//
-//            URL imageURL = null;
-//            try {
-//                imageURL = new URL(logoSRC);
-//            } catch (MalformedURLException e) {
-//                throw new RuntimeException(e);
-//            }
-//            BufferedImage saveImage = null;
-//            try {
-//                saveImage = ImageIO.read(imageURL);
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
-//
-//            try {
-//                ImageIO.write(saveImage, "png", new File("logo-image.png"));
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
-
 
         });
 
 
         JButton process1 = new JButton("process1");
-        process1.setBounds(fieldForUserName.getX(), search.getY()+search.getHeight()+20, search.getWidth()*2, search.getHeight());
+        process1.setBounds(fieldForUserName.getX(), search.getY()+search.getHeight()+25, search.getWidth()*2, search.getHeight());
         this.add(process1);
 
         JButton process2 = new JButton("process2");
-        process2.setBounds(fieldForUserName.getX(), process1.getY()+process1.getHeight()+20, search.getWidth()*2, search.getHeight());
+        process2.setBounds(fieldForUserName.getX(), process1.getY()+process1.getHeight()+25, search.getWidth()*2, search.getHeight());
         this.add(process2);
 
         JButton process3 = new JButton("process3");
-        process3.setBounds(fieldForUserName.getX(), process2.getY()+process2.getHeight()+20, search.getWidth()*2, search.getHeight());
+        process3.setBounds(fieldForUserName.getX(), process2.getY()+process2.getHeight()+25, search.getWidth()*2, search.getHeight());
         this.add(process3);
 
         JButton process4 = new JButton("process4");
-        process4.setBounds(fieldForUserName.getX(), process3.getY()+process3.getHeight()+20, search.getWidth()*2, search.getHeight());
+        process4.setBounds(fieldForUserName.getX(), process3.getY()+process3.getHeight()+25, search.getWidth()*2, search.getHeight());
         this.add(process4);
 
         JButton process5 = new JButton("process5");
-        process5.setBounds(fieldForUserName.getX(), process4.getY()+process4.getHeight()+20, search.getWidth()*2, search.getHeight());
+        process5.setBounds(fieldForUserName.getX(), process4.getY()+process4.getHeight()+25, search.getWidth()*2, search.getHeight());
         this.add(process5);
+
+        JButton process6 = new JButton("process6");
+        process6.setBounds(fieldForUserName.getX(), process5.getY()+process5.getHeight()+25, search.getWidth()*2, search.getHeight());
+        this.add(process6);
 
     }
 
