@@ -1,3 +1,5 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -11,7 +13,16 @@ public class PanelWindow extends JPanel {
 
     public PaintRectangle board;
     public String userNameToEnter;
+    public JLabel label;
+    public BufferedImage image;
+    public JButton  b;
+    public JButton[] buttons = new JButton[6];
 
+public PanelWindow(){
+    for (int i = 0; i < 6; i++) {
+        buttons[i]= new JButton();
+    }
+}
     public PanelWindow(int width, int height)  throws IOException {
 
         this.setBounds(0, 0, width, height);
@@ -42,26 +53,36 @@ public class PanelWindow extends JPanel {
                     "C:\\Users\\User\\Downloads\\chromedriver\\chromedriver.exe");
             ChromeDriver driver = new ChromeDriver();
 
-
         });
+
 
 
 
         String path = "https://scontent.fsdv1-2.fna.fbcdn.net/v/t1.6435-1/116319167_162575712015302_3747560749600239230_n.jpg?stp=dst-jpg_s320x320&_nc_cat=108&ccb=1-7&_nc_sid=7206a8&_nc_ohc=KVicVDuXHKsAX9s7brZ&_nc_ht=scontent.fsdv1-2.fna&oh=00_AT8GAENPo9YbF0jMKZhmi2erp-QJJu9fcu3PL4VzA4Ihcg&oe=630A96AA";
         URL url = new URL(path);
         BufferedImage img = ImageIO.read(url);
-        BufferedImage picture = resize(img, new Dimension(250, 250));
+        BufferedImage picture = resize(img, new Dimension(350, 350));
 
 
         File file = new File("C:\\Users\\User\\OneDrive\\שולחן העבודה\\image\\src\\main\\java\\gal2.jpg");
-
         ImageIO.write(picture , "png" , file);
+
         File output = new File("C:\\Users\\User\\OneDrive\\שולחן העבודה\\image\\src\\main\\java\\picture2.jpg");
+        image = ImageIO.read(output);
 
 
-        JLabel label = new JLabel(new ImageIcon(picture));
-        label.setBounds(75 , 100 ,picture.getWidth(),picture.getHeight() );
-        this.add(label);
+        JLabel original = new JLabel(new ImageIcon(picture));
+        original.setBounds(75 , 100 ,picture.getWidth(),picture.getHeight() );
+        this.add(original);
+
+        label = new JLabel(new ImageIcon(picture));
+        label.setBounds(750 , 100 ,picture.getWidth(),picture.getHeight() );
+
+        b = new JButton(new ImageIcon(picture));
+        b.setBounds(750 , 100 ,image.getWidth(),image.getHeight());
+        b.setVisible(true);
+        this.add(b);
+
 
         JButton button1 = new JButton();
         button1.setText("process1");
@@ -71,11 +92,27 @@ public class PanelWindow extends JPanel {
         button1.addActionListener((event)->{
             try {
                 Filters filter = new Filters(picture ,1 , output);
+                image = ImageIO.read(output);
+
+
+                b.setVisible(false);
+                PanelWindow panelWindow  = new PanelWindow();
+                panelWindow.setVisible(1);
+
+
+                buttons[1] = new JButton(new ImageIcon(ImageIO.read(output)));
+                buttons[1].setBounds(750 , 100 ,image.getWidth(),image.getHeight());
+                buttons[1].setVisible(true);
+                this.add(buttons[1]);
+
+
+
+
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
-
 
         JButton button2 = new JButton();
         button2.setText("process2");
@@ -83,15 +120,28 @@ public class PanelWindow extends JPanel {
         this.add(button2);
 
         button2.addActionListener((event)->{
-            try {
-                Filters filter = new Filters(picture ,2 , output);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            Thread t = new Thread(()->{
+                try {
+                    Filters filter = new Filters(picture ,2 , output);
+                    b.setVisible(false);
+                    PanelWindow panelWindow  = new PanelWindow();
+                    panelWindow.setVisible(2);
+
+
+                    buttons[2] = new JButton(new ImageIcon(ImageIO.read(output)));
+                    buttons[2].setBounds(750 , 100 ,image.getWidth(),image.getHeight());
+                    buttons[2].setVisible(true);
+                    this.add(buttons[2]);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+
+            });
+            t.start();
+
+
         });
-
-
-
 
         JButton button3 = new JButton();
         button3.setText("process3");
@@ -99,11 +149,29 @@ public class PanelWindow extends JPanel {
         this.add(button3);
 
         button3.addActionListener((event)->{
-            try {
-                Filters filter = new Filters(picture ,3 , output);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            Thread t1 = new Thread(()->{
+                try {
+                    Filters filter = new Filters(picture ,3 , output);
+                    b.setVisible(false);
+                    PanelWindow panelWindow  = new PanelWindow();
+                    panelWindow.setVisible(2);
+
+
+                    buttons[2] = new JButton(new ImageIcon(ImageIO.read(output)));
+                    buttons[2].setBounds(750 , 100 ,image.getWidth(),image.getHeight());
+                    buttons[2].setVisible(true);
+                    this.add(buttons[2]);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+            t1.start();
+            while(t1.isAlive()){
+                label.setBounds(750 , 100 ,image.getWidth(),image.getHeight());
+                this.add(label);
+                this.repaint();
             }
+
         });
 
 
@@ -113,10 +181,22 @@ public class PanelWindow extends JPanel {
         this.add(button4);
 
         button4.addActionListener((event)->{
-            try {
-                Filters filter = new Filters(picture ,4 , output);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            Thread t = new Thread(()->{
+                try {
+                    Filters filter = new Filters(picture ,4 , output);
+                    b = new JButton(new ImageIcon(ImageIO.read(output)));
+                    b.setBounds(750 , 100 ,image.getWidth(),image.getHeight());
+                    b.setVisible(true);
+                    this.add(b);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+            t.start();
+            while(t.isAlive()){
+                label.setBounds(750 , 100 ,image.getWidth(),image.getHeight());
+                this.add(label);
+                this.repaint();
             }
         });
 
@@ -127,10 +207,20 @@ public class PanelWindow extends JPanel {
         this.add(button5);
 
         button5.addActionListener((event)->{
-            try {
-                Filters filter = new Filters(picture ,5 , output);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            Thread t = new Thread(()->{
+                try {
+                    Filters filter = new Filters(picture ,5 , output);
+                    b = new JButton(new ImageIcon(ImageIO.read(output)));
+                    b.setBounds(750 , 100 ,image.getWidth(),image.getHeight());
+                    b.setVisible(true);
+                    this.add(b);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+            t.start();
+            while(t.isAlive()){
+
             }
         });
 
@@ -142,26 +232,22 @@ public class PanelWindow extends JPanel {
         button6.addActionListener((event)->{
             try {
                 Filters filter = new Filters(picture ,6 , output);
+                b = new JButton(new ImageIcon(ImageIO.read(output)));
+                b.setBounds(750 , 100 ,image.getWidth(),image.getHeight());
+                b.setVisible(true);
+                this.add(b);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
 
 
-//        while (true) {
-            BufferedImage image = ImageIO.read(output);
-//            int oldPicture = picture.getRGB(100,100);
-//            int pixel = image.getRGB( 100 , 100);
-//            Color color = new Color(pixel);
-//            Color color1 = new Color(oldPicture);
-//            if ((color.getBlue() + color.getRed() + color.)) {
-//
-                JLabel outputImage = new JLabel(new ImageIcon(image));
-                outputImage.setBounds(650 , 100 ,250 , 250 );
-                this.add(outputImage);
-//            }
-//        }
 
+
+
+//
+//            outputImage.setBounds(750 , 100 ,image.getWidth(),image.getHeight());
+//            this.add(outputImage);
 
     }
 
@@ -169,6 +255,7 @@ public class PanelWindow extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         this.board.paint(g);
+        this.label.paint(g);
     }
 
     public BufferedImage resize( BufferedImage image,  Dimension size) {
@@ -179,4 +266,15 @@ public class PanelWindow extends JPanel {
         return resized;
 
     }
+    public  void setVisible(int x){
+        for (int i = 0; i < 6; i++) {
+            if(i == x){
+                return;
+            }
+            buttons[i].setVisible(false);
+        }
+    }
+
+
+
 }

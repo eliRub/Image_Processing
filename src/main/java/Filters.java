@@ -1,4 +1,5 @@
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -8,6 +9,8 @@ import java.util.Random;
 public class Filters {
 
     public Filters (BufferedImage image , int number , File output) throws IOException {
+
+
 
         Color color1;
         int width = image.getWidth();
@@ -48,12 +51,9 @@ public class Filters {
                         image1.setRGB(x, y, color1.getRGB());
                     }
                 }
-
-
             }
         }
         ImageIO.write(image1,"png",output);
-
 
     }
 
