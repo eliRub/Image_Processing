@@ -1,5 +1,4 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+
 import org.openqa.selenium.chrome.ChromeDriver;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -11,24 +10,16 @@ import java.net.URL;
 
 public class PanelWindow extends JPanel {
 
-    public PaintRectangle board;
     public String userNameToEnter;
-    public JLabel label;
     public BufferedImage image;
-    public JButton  b;
-//    public JButton[] buttons = new JButton[6];
+    public ImageIcon AfterFilter;
+    public BufferedImage picture;
+    public File output;
 
-//public PanelWindow(){
-//    for (int i = 0; i < 6; i++) {
-//        buttons[i]= new JButton();
-//    }
-//}
     public PanelWindow(int width, int height)  throws IOException {
 
         this.setBounds(0, 0, width, height);
         this.setLayout(null);
-
-        this.board = new PaintRectangle(0, 0, width, height);
 
         JButton text = new JButton("What to enter?");
         text.setBounds(width/2-80, 15, 150, 30);
@@ -50,199 +41,67 @@ public class PanelWindow extends JPanel {
         search.addActionListener((event) ->{
             System.setProperty(
                     "webdriver.chrome.driver",
-                    "C:\\Users\\User\\Downloads\\chromedriver\\chromedriver.exe");
+                    "C:\\\\Users\\\\Eliyahu toronto\\\\Dropbox\\\\PC\\\\Downloads\\\\Eli\\\\chromedriver.exe");
             ChromeDriver driver = new ChromeDriver();
 
         });
 
-
-
-
         String path = "https://scontent.fsdv1-2.fna.fbcdn.net/v/t1.6435-1/116319167_162575712015302_3747560749600239230_n.jpg?stp=dst-jpg_s320x320&_nc_cat=108&ccb=1-7&_nc_sid=7206a8&_nc_ohc=KVicVDuXHKsAX9s7brZ&_nc_ht=scontent.fsdv1-2.fna&oh=00_AT8GAENPo9YbF0jMKZhmi2erp-QJJu9fcu3PL4VzA4Ihcg&oe=630A96AA";
         URL url = new URL(path);
         BufferedImage img = ImageIO.read(url);
-        BufferedImage picture = resize(img, new Dimension(350, 350));
+        picture = resize(img, new Dimension(350, 350));
 
-
-        File file = new File("C:\\Users\\User\\OneDrive\\שולחן העבודה\\image\\src\\main\\java\\gal2.jpg");
+        File file = new File("C:\\Users\\Eliyahu toronto\\Image_Processing3\\src\\main\\java\\gal2.jpg");
         ImageIO.write(picture , "png" , file);
 
-        File output = new File("C:\\Users\\User\\OneDrive\\שולחן העבודה\\image\\src\\main\\java\\picture2.jpg");
+        output = new File("C:\\Users\\Eliyahu toronto\\Image_Processing3\\src\\main\\java\\picture2.jpg");
         image = ImageIO.read(output);
-
+        AfterFilter = new ImageIcon((picture));
 
         JLabel original = new JLabel(new ImageIcon(picture));
         original.setBounds(75 , 100 ,picture.getWidth(),picture.getHeight() );
         this.add(original);
 
-//        label = new JLabel(new ImageIcon(picture));
-//        label.setBounds(750 , 100 ,picture.getWidth(),picture.getHeight() );
-
-        b = new JButton(new ImageIcon(picture));
-        b.setBounds(750 , 100 ,image.getWidth(),image.getHeight());
-        b.setVisible(true);
-        this.add(b);
-
-
-        JButton button1 = new JButton();
-        button1.setText("process1");
-        button1.setBounds(fieldForUserName.getX(), search.getY()+search.getHeight()+20, search.getWidth()*2, search.getHeight()+1);
+        JButton button1 = createButton("שחור לבן",fieldForUserName.getX(), search.getY()+search.getHeight()+20, search.getWidth()*2, search.getHeight()+1 , 1);
         this.add(button1);
 
-        button1.addActionListener((event)->{
-            try {
-                Filters filter = new Filters(picture ,1 , output);
-//                image = ImageIO.read(output);
-//
-//
-//                b.setVisible(false);
-//                PanelWindow panelWindow  = new PanelWindow();
-//                panelWindow.setVisible(1);
-//
-//
-//                buttons[1] = new JButton(new ImageIcon(ImageIO.read(output)));
-//                buttons[1].setBounds(750 , 100 ,image.getWidth(),image.getHeight());
-//                buttons[1].setVisible(true);
-//                this.add(buttons[1]);
-
-
-
-
-
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        JButton button2 = new JButton();
-        button2.setText("process2");
-        button2.setBounds(fieldForUserName.getX(),button1.getY() + button1.getHeight()+20 , search.getWidth()*2, search.getHeight());
+        JButton button2 = createButton("מראה" , fieldForUserName.getX(),button1.getY() + button1.getHeight()+20 , search.getWidth()*2, search.getHeight() , 2);
         this.add(button2);
 
-        button2.addActionListener((event)->{
-            Thread t = new Thread(()->{
-                try {
-                    Filters filter = new Filters(picture ,2 , output);
-//                    b.setVisible(false);
-//                    PanelWindow panelWindow  = new PanelWindow();
-//                    panelWindow.setVisible(2);
-//
-//
-//                    buttons[2] = new JButton(new ImageIcon(ImageIO.read(output)));
-//                    buttons[2].setBounds(750 , 100 ,image.getWidth(),image.getHeight());
-//                    buttons[2].setVisible(true);
-//                    this.add(buttons[2]);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-
-
-            });
-            t.start();
-
-
-        });
-
-        JButton button3 = new JButton();
-        button3.setText("process3");
-        button3.setBounds(fieldForUserName.getX(), button2.getY() + button2.getHeight()+20 , search.getWidth()*2, search.getHeight());
+        JButton button3 = createButton("process3",fieldForUserName.getX(), button2.getY() + button2.getHeight()+20 , search.getWidth()*2, search.getHeight() , 3);
         this.add(button3);
 
-        button3.addActionListener((event)->{
-                try {
-                    Filters filter = new Filters(picture ,3 , output);
-//                    b.setVisible(false);
-//                    PanelWindow panelWindow  = new PanelWindow();
-//                    panelWindow.setVisible(2);
-//
-//
-//                    buttons[2] = new JButton(new ImageIcon(ImageIO.read(output)));
-//                    buttons[2].setBounds(750 , 100 ,image.getWidth(),image.getHeight());
-//                    buttons[2].setVisible(true);
-//                    this.add(buttons[2]);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-
-
-        });
-
-
-        JButton button4 = new JButton( );
-        button4.setText("process4");
-        button4.setBounds(fieldForUserName.getX(), button3.getY()+button3.getHeight()+20, search.getWidth()*2, search.getHeight());
+        JButton button4 = createButton("process4",fieldForUserName.getX(), button3.getY()+button3.getHeight()+20, search.getWidth()*2, search.getHeight() , 4);
         this.add(button4);
 
-        button4.addActionListener((event)->{
-                try {
-                    Filters filter = new Filters(picture ,4 , output);
-//                    b = new JButton(new ImageIcon(ImageIO.read(output)));
-//                    b.setBounds(750 , 100 ,image.getWidth(),image.getHeight());
-//                    b.setVisible(true);
-//                    this.add(b);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-
-//            t.start();
-//            while(t.isAlive()){
-//                label.setBounds(750 , 100 ,image.getWidth(),image.getHeight());
-//                this.add(label);
-//                this.repaint();
-//            }
-        });
-
-
-        JButton button5 = new JButton();
-        button5.setText("process5");
-        button5.setBounds(fieldForUserName.getX(), button4.getY()+button4.getHeight()+20, search.getWidth()*2, search.getHeight());
+        JButton button5 = createButton("process5",fieldForUserName.getX(), button4.getY()+button4.getHeight()+20, search.getWidth()*2, search.getHeight() , 5);
         this.add(button5);
 
-        button5.addActionListener((event)->{
-                try {
-                    Filters filter = new Filters(picture ,5 , output);
-//                    b = new JButton(new ImageIcon(ImageIO.read(output)));
-//                    b.setBounds(750 , 100 ,image.getWidth(),image.getHeight());
-//                    b.setVisible(true);
-//                    this.add(b);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-
-        });
-
-        JButton button6 = new JButton();
-        button6.setText("process6");
-        button6.setBounds(fieldForUserName.getX(), button5.getY()+button4.getHeight()+20, search.getWidth()*2, search.getHeight());
+        JButton button6 = createButton("process6",fieldForUserName.getX(), button5.getY()+button4.getHeight()+20, search.getWidth()*2, search.getHeight() , 6);
         this.add(button6);
 
-        button6.addActionListener((event)->{
+    }
+    public JButton createButton(String name, int x, int y, int width, int height , int numOfFilter){
+        JButton button = new JButton(name);
+        button.setBounds(x , y ,width,height);
+        button.addActionListener((event)->{
             try {
-                Filters filter = new Filters(picture ,6 , output);
-//                b = new JButton(new ImageIcon(ImageIO.read(output)));
-//                b.setBounds(750 , 100 ,image.getWidth(),image.getHeight());
-//                b.setVisible(true);
-//                this.add(b);
+                Filters filter = new Filters(picture ,numOfFilter , output);
+                AfterFilter =  new ImageIcon(ImageIO.read(output));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+            paint(getGraphics());
         });
-
-
-
-
-
-//
-//            outputImage.setBounds(750 , 100 ,image.getWidth(),image.getHeight());
-//            this.add(outputImage);
+        return button;
 
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        this.board.paint(g);
-//        this.label.paint(g);
+
+    public void paint(Graphics g){
+        super.paint(g);
+        g.drawImage(AfterFilter.getImage(),750,100,null);
+
     }
 
     public BufferedImage resize( BufferedImage image,  Dimension size) {
@@ -253,15 +112,9 @@ public class PanelWindow extends JPanel {
         return resized;
 
     }
-//    public  void setVisible(int x){
-//        for (int i = 0; i < 6; i++) {
-//            if(i == x){
-//                return;
-//            }
-//            buttons[i].setVisible(false);
-//        }
-//    }
-
-
 
 }
+
+// eliyahu  ->  "C:\\Users\\Eliyahu toronto\\Dropbox\\PC\\Downloads\\Eli\\chromedriver.exe";
+// yoni  -> "C:\\Users\\User\\Downloads\\chromedriver_win32\\chromedriver.exe"
+// eli -> "C:\\Users\\ELI\\Downloads\\chromedriver_win32\\chromedriver.exe"

@@ -8,8 +8,7 @@ import java.util.Random;
 
 public class Filters {
 
-    public Filters (BufferedImage image , int number , File output) throws IOException {
-
+    public Filters(BufferedImage image, int number, File output) throws IOException {
 
 
         Color color1;
@@ -18,12 +17,12 @@ public class Filters {
         Random random = new Random();
         int num = random.nextInt(3);
 
-        File file = new File("C:\\Users\\User\\OneDrive\\שולחן העבודה\\image\\src\\main\\java\\gal2.jpg");
+        File file = new File("C:\\Users\\Eliyahu toronto\\Image_Processing3\\src\\main\\java\\gal2.jpg");
         BufferedImage image1 = ImageIO.read(file);
 
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
-                int pixel = image.getRGB(x,y);
+                int pixel = image.getRGB(x, y);
                 Color color = new Color(pixel);
                 switch (number) {
                     case 1 -> {
@@ -31,7 +30,7 @@ public class Filters {
                         image1.setRGB(x, y, color1.getRGB());
                     }
                     case 2 -> {
-                        image1.setRGB(width - x -1 , y , color.getRGB());
+                        image1.setRGB(width - x - 1, y, color.getRGB());
                     }
 
                     case 3 -> {
@@ -47,42 +46,42 @@ public class Filters {
                         image1.setRGB(x, y, color1.getRGB());
                     }
                     default -> {
-                        color1 = ligher(color);
+                        color1 = lighter(color);
                         image1.setRGB(x, y, color1.getRGB());
                     }
                 }
             }
         }
-        ImageIO.write(image1,"png",output);
+        ImageIO.write(image1, "png", output);
 
     }
 
-    public Color blackAndWhite (Color color){
+    public Color blackAndWhite(Color color) {
         int red = color.getRed();
         int green = color.getGreen();
         int blue = color.getBlue();
         int average = (red + green + blue) / 3;
-        return new Color(average , average , average);
+        return new Color(average, average, average);
     }
 
 
-    public Color colorShiftRight (Color color){
+    public Color colorShiftRight(Color color) {
         int red = color.getRed();
         int green = color.getGreen();
         int blue = color.getBlue();
 
-        return new Color(green,blue,red);
+        return new Color(green, blue, red);
     }
 
-    public Color colorShiftLeft (Color color){
+    public Color colorShiftLeft(Color color) {
         int red = color.getRed();
         int green = color.getGreen();
         int blue = color.getBlue();
 
-        return new Color(blue , red , green);
+        return new Color(blue, red, green);
     }
 
-    public Color eliminate (Color color , int num){
+    public Color eliminate(Color color, int num) {
 
         int red = color.getRed();
         int green = color.getGreen();
@@ -95,18 +94,19 @@ public class Filters {
         };
     }
 
-    public Color ligher (Color color){
-        int red = intenseColor(color.getRed(),1.2);
-        int green = intenseColor(color.getGreen(),1.2);
-        int blue = intenseColor(color.getBlue(),1.2);
 
-        return new Color(red , green , blue);
+    public Color lighter(Color color) {
+        int red = intenseColor(color.getRed(), 1.2);
+        int green = intenseColor(color.getGreen(), 1.2);
+        int blue = intenseColor(color.getBlue(), 1.2);
+
+        return new Color(red, green, blue);
     }
 
-    public static int intenseColor (int original, double by){
+    public static int intenseColor(int original, double by) {
         original *= by;
-        if (original>255){
-            original =255;
+        if (original > 255) {
+            original = 255;
         }
         return original;
     }

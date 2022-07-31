@@ -8,7 +8,7 @@ public class MainWindow extends JFrame {
     public static final int WINDOW_HEIGHT = 600;
 
     public MainWindow() {
-        this.setVisible(true);
+
         this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -19,6 +19,7 @@ public class MainWindow extends JFrame {
         PanelWindow panelWindow = null;
         try {
             panelWindow = new PanelWindow(WINDOW_WIDTH, WINDOW_HEIGHT);
+            this.setVisible(true);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
