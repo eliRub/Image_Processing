@@ -9,15 +9,13 @@ import java.util.Random;
 public class Filters {
 
     public Filters(BufferedImage image, int number, File output) throws IOException {
-
-
         Color color1;
         int width = image.getWidth();
         int height = image.getHeight();
         Random random = new Random();
         int num = random.nextInt(3);
 
-        File file = new File("C:\\Users\\ELI\\Desktop\\coding and cyber\\java\\Image_Processing1\\src\\main\\java\\Casetta_SVG.svg.png");
+        File file = new File("src/main/java/Image1.jpg");
         BufferedImage image1 = ImageIO.read(file);
 
         for (int x = 0; x < width; x++) {
@@ -102,7 +100,6 @@ public class Filters {
 
         return new Color(red, green, blue);
     }
-
     public static int intenseColor(int original, double by) {
         original *= by;
         if (original > 255) {

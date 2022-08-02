@@ -8,24 +8,19 @@ import java.util.List;
 public class GetImage {
 
     public String imageUrl;
-    public GetImage() {
+    public GetImage(String Name) {
 
         System.setProperty(
                 "webdriver.chrome.driver",
-                "C:\\Users\\ELI\\Downloads\\chromedriver_win32\\chromedriver.exe");
+                "C:\\Users\\Eliyahu toronto\\Dropbox\\PC\\Downloads\\driver\\chromedriver.exe");
         ChromeDriver driver = new ChromeDriver();
-        String facebook = "https://www.facebook.com/";
-        String profileName = "profile.php?id=100026765677860";
-
-        String url = facebook+profileName;
-        driver.get(url);
+        driver.get(Name);
         driver.manage().window().maximize();
 
         List<WebElement> circleClass = driver.findElements(By.tagName("image"));
         WebElement circlePress = circleClass.get(0);
 
         imageUrl = circlePress.getAttribute("xlink:href");
-//        System.out.println("Src attribute is: "+ circlePress.getAttribute("xlink:href"));
         driver.close();
     }
 

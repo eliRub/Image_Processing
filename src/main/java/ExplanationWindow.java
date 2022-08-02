@@ -16,16 +16,16 @@ public class ExplanationWindow extends JFrame {
         this.setResizable(true);
         this.setLayout(null);
 
-        JLabel explain1 = new JLabel("Go to the Facebook profile, there is a button with 3 points");
+        JLabel explain1 = new JLabel("Go to the Facebook profile, After a https://he-il.facebook.com");
         explain1.setBounds(X, Y - 50, WINDOW_WIDTH, TEXT_HEIGHT);
 
         this.add(explain1);
 
-        JLabel explain2 = new JLabel( "Click on it, and then click on status account");
+        JLabel explain2 = new JLabel( "             There is A unique Facebook ID");
         explain2.setBounds(X, Y, WINDOW_WIDTH, TEXT_HEIGHT);
         this.add(explain2);
 
-        JLabel explain3 = new JLabel( "And there under a username there is a string, bring it.");
+        JLabel explain3 = new JLabel( "              Bring it , And copy this here !!!");
         explain3.setBounds(X, Y + 50, WINDOW_WIDTH, TEXT_HEIGHT);
         this.add(explain3);
     }
