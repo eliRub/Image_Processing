@@ -5,9 +5,6 @@ import java.awt.*;
 import java.io.IOException;
 
 public class PanelWindow extends JPanel {
-
-
-
     public TextField fieldForUserName;
     public JButton search;
 
