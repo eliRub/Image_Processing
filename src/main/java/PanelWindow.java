@@ -1,4 +1,5 @@
 
+import io.opentelemetry.sdk.trace.data.LinkData;
 import org.openqa.selenium.chrome.ChromeDriver;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -16,7 +17,7 @@ public class PanelWindow extends JPanel {
     public BufferedImage picture;
     public File output;
 
-    public PanelWindow(int width, int height)  throws IOException {
+    public PanelWindow(int width, int height) throws IOException {
 
         this.setBounds(0, 0, width, height);
         this.setLayout(null);
@@ -41,20 +42,22 @@ public class PanelWindow extends JPanel {
         search.addActionListener((event) ->{
             System.setProperty(
                     "webdriver.chrome.driver",
-                    "C:\\\\Users\\\\Eliyahu toronto\\\\Dropbox\\\\PC\\\\Downloads\\\\Eli\\\\chromedriver.exe");
+                    "C:\\Users\\ELI\\Downloads\\driver\\chromedriver.exe");
             ChromeDriver driver = new ChromeDriver();
 
         });
 
-        String path = "https://scontent.fsdv1-2.fna.fbcdn.net/v/t1.6435-1/116319167_162575712015302_3747560749600239230_n.jpg?stp=dst-jpg_s320x320&_nc_cat=108&ccb=1-7&_nc_sid=7206a8&_nc_ohc=KVicVDuXHKsAX9s7brZ&_nc_ht=scontent.fsdv1-2.fna&oh=00_AT8GAENPo9YbF0jMKZhmi2erp-QJJu9fcu3PL4VzA4Ihcg&oe=630A96AA";
+        GetImage getImage = new GetImage();
+
+        String path = getImage.imageUrl;
         URL url = new URL(path);
         BufferedImage img = ImageIO.read(url);
         picture = resize(img, new Dimension(350, 350));
 
-        File file = new File("C:\\Users\\Eliyahu toronto\\Image_Processing3\\src\\main\\java\\gal2.jpg");
+        File file = new File("C:\\Users\\ELI\\Desktop\\coding and cyber\\java\\Image_Processing1\\src\\main\\java\\Casetta_SVG.svg.png");
         ImageIO.write(picture , "png" , file);
 
-        output = new File("C:\\Users\\Eliyahu toronto\\Image_Processing3\\src\\main\\java\\picture2.jpg");
+        output = new File("C:\\Users\\ELI\\Desktop\\coding and cyber\\java\\Image_Processing1\\src\\main\\java\\Casetta_SVG.svg.png");
         image = ImageIO.read(output);
         AfterFilter = new ImageIcon((picture));
 
@@ -104,14 +107,14 @@ public class PanelWindow extends JPanel {
 
     }
 
-    public BufferedImage resize( BufferedImage image,  Dimension size) {
+    public BufferedImage resize(BufferedImage image, Dimension size) {
         BufferedImage resized = new BufferedImage(size.width, size.height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = resized.createGraphics();
         g.drawImage(image, 0, 0, size.width, size.height, null);
         g.dispose();
         return resized;
-
     }
+
 
 }
 

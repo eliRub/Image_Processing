@@ -17,7 +17,7 @@ public class Filters {
         Random random = new Random();
         int num = random.nextInt(3);
 
-        File file = new File("C:\\Users\\Eliyahu toronto\\Image_Processing3\\src\\main\\java\\gal2.jpg");
+        File file = new File("C:\\Users\\ELI\\Desktop\\coding and cyber\\java\\Image_Processing1\\src\\main\\java\\Casetta_SVG.svg.png");
         BufferedImage image1 = ImageIO.read(file);
 
         for (int x = 0; x < width; x++) {
