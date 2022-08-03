@@ -32,7 +32,7 @@ public class GetImage {
         if(Objects.equals(url1, url2)) {
             System.out.println("\n \n \nThere is no picture on this profile \n \n \n");   //  כאן במקום להדפיס לקןנסול צריך לפתוח חלון כרפי חדש
             try {
-                Thread.sleep(5000);                           //  כאן כתבתי לו לחכות 5 שניות סתם בשביל שיהיה לי יותר ברור שפה אין תמןנה אפשר להוריד את זה
+                Thread.sleep(5000);                            //  כאן כתבתי לו לחכות 5 שניות סתם בשביל שיהיה לי יותר ברור שפה אין תמןנה אפשר להוריד את זה
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
