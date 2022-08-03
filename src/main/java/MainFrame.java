@@ -1,4 +1,3 @@
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -6,33 +5,33 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class MainFrame extends JFrame {
     public String userNameToEnter;
-    public BufferedImage image;
     public ImageIcon AfterFilter;
-    public BufferedImage picture;
+    public BufferedImage picture, image;
     public File output;
     public URL url;
-
-    public MainFrame(int width, int height, String name) throws IOException {
-        this.setBounds(0, 0, width, height);
+    public static final int WINDOW_WIDTH = 1200;
+    public static final int WINDOW_HEIGHT = 600;
+    public MainFrame(String name) throws IOException {
+        this.setBounds(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setLayout(null);
 
+
         JButton text = new JButton("What to enter?");
-        text.setBounds(width/2-80, 15, 150, 30);
+        text.setBounds(WINDOW_WIDTH/2-80, 15, 150, 30);
         text.addActionListener((event) -> {
             ExplanationWindow explanationWindow = new ExplanationWindow();
         });
         this.add(text);
 
         TextField fieldForUserName = new TextField();
-        fieldForUserName.setBounds((width/2)-100, text.getY()+text.getHeight()+20, 100, 30);
+        fieldForUserName.setBounds((WINDOW_WIDTH/2)-100, text.getY()+text.getHeight()+20, 100, 30);
         this.add(fieldForUserName);
 
         this.userNameToEnter = fieldForUserName.getText();
@@ -40,12 +39,11 @@ public class MainFrame extends JFrame {
         JButton search = new JButton("search");
         search.setBounds(fieldForUserName.getX()+fieldForUserName.getWidth(), fieldForUserName.getY(), fieldForUserName.getWidth(), fieldForUserName.getHeight());
         this.add(search);
-
         search.addActionListener((event) ->{
 
             try {
                 this.dispose();
-                MainFrame mainFrame = new MainFrame(width,height,"https://www.facebook.com/"+fieldForUserName.getText());
+                MainFrame mainFrame = new MainFrame("https://www.facebook.com"+fieldForUserName.getText());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -58,10 +56,10 @@ public class MainFrame extends JFrame {
         BufferedImage img = ImageIO.read(url);
         picture = resize(img, new Dimension(350, 350));
 
-        File file = new File("C:\\Users\\ELI\\Desktop\\coding and cyber\\java\\Image_Processing1\\src\\main\\java\\Image1.jpg");
+        File file = new File("src/main/java/Image1.jpg");
         ImageIO.write(picture , "png" , file);
 
-        output = new File("C:\\Users\\ELI\\Desktop\\coding and cyber\\java\\Image_Processing1\\src\\main\\java\\picture2.jpg");
+        output = new File("src/main/java/picture2.jpg");
         image = ImageIO.read(output);
         AfterFilter = new ImageIcon((picture));
 
@@ -69,22 +67,22 @@ public class MainFrame extends JFrame {
         original.setBounds(75 , 100 ,picture.getWidth(),picture.getHeight() );
         this.add(original);
 
-        JButton button1 = createButton("שחור לבן",fieldForUserName.getX(), search.getY()+search.getHeight()+20, search.getWidth()*2, search.getHeight()+1 , 1);
+        JButton button1 = createButton("Grayscale",fieldForUserName.getX(), search.getY()+search.getHeight()+20, search.getWidth()*2, search.getHeight()+1 , 1);
         this.add(button1);
 
-        JButton button2 = createButton("מראה" , fieldForUserName.getX(),button1.getY() + button1.getHeight()+20 , search.getWidth()*2, search.getHeight() , 2);
+        JButton button2 = createButton("Mirror" , fieldForUserName.getX(),button1.getY() + button1.getHeight()+20 , search.getWidth()*2, search.getHeight() , 2);
         this.add(button2);
 
-        JButton button3 = createButton("process3",fieldForUserName.getX(), button2.getY() + button2.getHeight()+20 , search.getWidth()*2, search.getHeight() , 3);
+        JButton button3 = createButton("Color Shift Right",fieldForUserName.getX(), button2.getY() + button2.getHeight()+20 , search.getWidth()*2, search.getHeight() , 3);
         this.add(button3);
 
-        JButton button4 = createButton("process4",fieldForUserName.getX(), button3.getY()+button3.getHeight()+20, search.getWidth()*2, search.getHeight() , 4);
+        JButton button4 = createButton("Color Shift Left",fieldForUserName.getX(), button3.getY()+button3.getHeight()+20, search.getWidth()*2, search.getHeight() , 4);
         this.add(button4);
 
-        JButton button5 = createButton("process5",fieldForUserName.getX(), button4.getY()+button4.getHeight()+20, search.getWidth()*2, search.getHeight() , 5);
+        JButton button5 = createButton("Eliminate",fieldForUserName.getX(), button4.getY()+button4.getHeight()+20, search.getWidth()*2, search.getHeight() , 5);
         this.add(button5);
 
-        JButton button6 = createButton("process6",fieldForUserName.getX(), button5.getY()+button4.getHeight()+20, search.getWidth()*2, search.getHeight() , 6);
+        JButton button6 = createButton("Lighter",fieldForUserName.getX(), button5.getY()+button4.getHeight()+20, search.getWidth()*2, search.getHeight() , 6);
         this.add(button6);
 
         this.setVisible(true);
@@ -109,7 +107,7 @@ public class MainFrame extends JFrame {
 
     public void paint(Graphics g){
         super.paint(g);
-        g.drawImage(AfterFilter.getImage(),750,100,null);
+        g.drawImage(AfterFilter.getImage(),750,120,null);
 
     }
 
