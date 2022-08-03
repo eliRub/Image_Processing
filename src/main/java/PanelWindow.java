@@ -53,9 +53,16 @@ public class PanelWindow extends JPanel {
 
             try {
                 frame.dispose();
-                MainFrame mainFrame = new MainFrame("https://www.facebook.com"+fieldForUserName.getText());
+                String str = fieldForUserName.getText();
+                if (str.length()!=0) {
+                    MainFrame mainFrame = new MainFrame("https://www.facebook.com" + str);
+                }else {
+                    ErrorWindow errorWindow = new ErrorWindow("You need to put sum thing");
+                }
 
             } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         });
@@ -63,5 +70,5 @@ public class PanelWindow extends JPanel {
 }
 
 // eli1  ->  "C:\Users\Eliyahu toronto\Dropbox\PC\Downloads\driver\chromedriver.exe";
-// yoni  -> "C:\\Users\\User\\Downloads\\chromedriver_win32\\chromedriver.exe"
+// yoni  -> "C:\\Users\\User\\Downloads\\chromedriver\\chromedriver.exe"
 // eli -> "C:\\Users\\ELI\\Downloads\\chromedriver_win32\\chromedriver.exe"

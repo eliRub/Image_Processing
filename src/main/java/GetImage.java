@@ -10,15 +10,16 @@ import java.util.Objects;
 
 public class GetImage {
     public String imageUrl;
-    public GetImage(String Name) {
+    public GetImage(String Name) throws InterruptedException {
 
         System.setProperty(
                 "webdriver.chrome.driver",
-                "C:\\\\Users\\\\ELI\\\\Downloads\\\\chromedriver_win32\\\\chromedriver.exe");
+                "C:\\\\Users\\\\User\\\\Downloads\\\\chromedriver\\\\chromedriver.exe");
         ChromeDriver driver = new ChromeDriver();
         driver.get(Name);
         driver.manage().window().maximize();
 
+        Thread.sleep(2000);
         List<WebElement> list = driver.findElements(By.tagName("image"));
         WebElement myImage = list.get(0);
 
@@ -30,14 +31,8 @@ public class GetImage {
         String url2 = driver.getCurrentUrl();
 
         if(Objects.equals(url1, url2)) {
-            System.out.println("\n \n \nThere is no picture on this profile \n \n \n");   //  כאן במקום להדפיס לקןנסול צריך לפתוח חלון כרפי חדש
-            try {
-                Thread.sleep(5000);                            //  כאן כתבתי לו לחכות 5 שניות סתם בשביל שיהיה לי יותר ברור שפה אין תמןנה אפשר להוריד את זה
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+           ErrorWindow errorWindow = new ErrorWindow("There is no picture on this profile");
             driver.close();
-            PanelWindow panelWindow = new PanelWindow();
         }
 
         imageUrl = myImage.getAttribute("xlink:href");

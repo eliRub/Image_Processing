@@ -15,7 +15,7 @@ public class MainFrame extends JFrame {
     public URL url;
     public static final int WINDOW_WIDTH = 1200;
     public static final int WINDOW_HEIGHT = 600;
-    public MainFrame(String name) throws IOException {
+    public MainFrame(String name) throws IOException, InterruptedException {
         this.setBounds(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -44,7 +44,7 @@ public class MainFrame extends JFrame {
             try {
                 this.dispose();
                 MainFrame mainFrame = new MainFrame("https://www.facebook.com"+fieldForUserName.getText());
-            } catch (IOException e) {
+            } catch (IOException | InterruptedException e) {
                 throw new RuntimeException(e);
             }
 
