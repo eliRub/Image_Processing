@@ -58,7 +58,7 @@ public class PanelWindow extends JPanel {
 
             try {
                 frame.dispose();
-                MainFrame mainFrame = new MainFrame(width,height,"https://www.facebook.com"+fieldForUserName.getText());
+                MainFrame mainFrame = new MainFrame(width,height,"https://www.facebook.com/"+fieldForUserName.getText());
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
