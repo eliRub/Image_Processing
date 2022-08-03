@@ -16,6 +16,7 @@ public class MainFrame extends JFrame {
     public BufferedImage picture;
     public File output;
     public URL url;
+
     public MainFrame(int width, int height, String name) throws IOException {
         this.setBounds(0, 0, width, height);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -44,7 +45,7 @@ public class MainFrame extends JFrame {
 
             try {
                 this.dispose();
-                MainFrame mainFrame = new MainFrame(width,height,"https://www.facebook.com"+fieldForUserName.getText());
+                MainFrame mainFrame = new MainFrame(width,height,"https://www.facebook.com/"+fieldForUserName.getText());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -57,10 +58,10 @@ public class MainFrame extends JFrame {
         BufferedImage img = ImageIO.read(url);
         picture = resize(img, new Dimension(350, 350));
 
-        File file = new File("src/main/java/Image1.jpg");
+        File file = new File("C:\\Users\\ELI\\Desktop\\coding and cyber\\java\\Image_Processing1\\src\\main\\java\\Image1.jpg");
         ImageIO.write(picture , "png" , file);
 
-        output = new File("src/main/java/picture2.jpg");
+        output = new File("C:\\Users\\ELI\\Desktop\\coding and cyber\\java\\Image_Processing1\\src\\main\\java\\picture2.jpg");
         image = ImageIO.read(output);
         AfterFilter = new ImageIcon((picture));
 
