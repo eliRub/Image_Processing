@@ -9,7 +9,7 @@ public class ExplanationWindow extends JFrame {
     public static final int Y = 70;
 
     public ExplanationWindow() {
-        this.setVisible(true);
+
         this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -28,6 +28,7 @@ public class ExplanationWindow extends JFrame {
         JLabel explain3 = new JLabel( "              Bring it , And copy this here !!!");
         explain3.setBounds(X, Y + 50, WINDOW_WIDTH, TEXT_HEIGHT);
         this.add(explain3);
+        this.setVisible(true);
     }
 
 }
