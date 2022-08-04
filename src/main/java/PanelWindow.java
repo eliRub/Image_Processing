@@ -57,7 +57,7 @@ public class PanelWindow extends JPanel {
                 if (str.length()!=0) {
                     MainFrame mainFrame = new MainFrame("https://www.facebook.com/" + str);
                 }else {
-                    ErrorWindow errorWindow = new ErrorWindow("You need to put sum thing");
+                    ErrorWindow errorWindow = new ErrorWindow("You have to enter something");
                 }
 
             } catch (IOException | InterruptedException e) {

@@ -15,7 +15,7 @@ public class GetImage {
 
         System.setProperty(
                 "webdriver.chrome.driver",
-                "C:\\\\Users\\\\User\\\\Downloads\\\\chromedriver\\\\chromedriver.exe");
+                "C:\\\\Users\\\\ELI\\\\Downloads\\\\chromedriver_win32\\\\chromedriver.exe");
         ChromeDriver driver = new ChromeDriver();
         driver.get(Name);
         driver.manage().window().maximize();
@@ -30,10 +30,10 @@ public class GetImage {
             }
         }
 
-        Thread.sleep(2000);
+        Thread.sleep(2000);  // this is because sometimes the internet connection is unstable, so it's wait 2 second.
         List<WebElement> list = driver.findElements(By.tagName("image"));
         WebElement myImage = list.get(0);
-
+        imageUrl = myImage.getAttribute("xlink:href");
         String url1 = driver.getCurrentUrl();
 
         Actions act = new Actions(driver);
@@ -43,7 +43,6 @@ public class GetImage {
 
         if(Objects.equals(url1, url2)) {
            ErrorWindow errorWindow = new ErrorWindow("There is no picture on this profile");
-           Thread.sleep(3000);
            driver.close();
         }
 
