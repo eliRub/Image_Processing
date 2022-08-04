@@ -44,10 +44,7 @@ public class MainFrame extends JFrame {
             try {
                 this.dispose();
                if(fieldForUserName.getText().equals("")){
-                   Thread thread = new Thread(()->{
-                       ErrorWindow errorWindow = new ErrorWindow("You need to put sum thing");
-                   });
-                   thread.start();
+                   ErrorWindow errorWindow = new ErrorWindow("You need to put sum thing");
                    return;
                }
                 MainFrame mainFrame = new MainFrame("https://www.facebook.com/"+fieldForUserName.getText());
