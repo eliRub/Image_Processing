@@ -55,7 +55,7 @@ public class PanelWindow extends JPanel {
                 frame.dispose();
                 String str = fieldForUserName.getText();
                 if (str.length()!=0) {
-                    MainFrame mainFrame = new MainFrame("https://www.facebook.com" + str);
+                    MainFrame mainFrame = new MainFrame("https://www.facebook.com/" + str);
                 }else {
                     ErrorWindow errorWindow = new ErrorWindow("You need to put sum thing");
                 }

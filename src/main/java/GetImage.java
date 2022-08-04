@@ -14,10 +14,17 @@ public class GetImage {
 
         System.setProperty(
                 "webdriver.chrome.driver",
-                "C:\\\\Users\\\\User\\\\Downloads\\\\chromedriver\\\\chromedriver.exe");
+                "C:\\\\Users\\\\ELI\\\\Downloads\\\\chromedriver_win32\\\\chromedriver.exe");
         ChromeDriver driver = new ChromeDriver();
         driver.get(Name);
         driver.manage().window().maximize();
+
+        if (driver.getPageSource().contains("The link you followed may be broken, or the page may have been removed.") ||
+                driver.getPageSource().contains("You must log in to continue.")){
+            ErrorWindow errorWindow = new ErrorWindow("You have entered an incorrect user name.");
+            Thread.sleep(3000);
+            driver.close();
+        }
 
         Thread.sleep(2000);
         List<WebElement> list = driver.findElements(By.tagName("image"));
@@ -32,7 +39,8 @@ public class GetImage {
 
         if(Objects.equals(url1, url2)) {
            ErrorWindow errorWindow = new ErrorWindow("There is no picture on this profile");
-            driver.close();
+           Thread.sleep(3000);
+           driver.close();
         }
 
         imageUrl = myImage.getAttribute("xlink:href");

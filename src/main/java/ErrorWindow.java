@@ -2,7 +2,7 @@ import javax.swing.*;
 
 public class ErrorWindow extends JFrame {
 
-    public static final int WINDOW_WIDTH = 400;
+    public static final int WINDOW_WIDTH = 500;
     public static final int WINDOW_HEIGHT = 250;
 
     public ErrorWindow(String str) {
@@ -15,7 +15,7 @@ public class ErrorWindow extends JFrame {
             this.setLayout(null);
 
             JLabel label = new JLabel(str);
-            label.setBounds(110,75,200,50);
+            label.setBounds(10,75,350,50);
             this.add(label);
             try {
                 Thread.sleep(3000);

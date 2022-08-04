@@ -47,7 +47,7 @@ public class MainFrame extends JFrame {
                    ErrorWindow errorWindow = new ErrorWindow("You need to put sum thing");
                    return;
                }
-                MainFrame mainFrame = new MainFrame("https://www.facebook.com"+fieldForUserName.getText());
+                MainFrame mainFrame = new MainFrame("https://www.facebook.com/"+fieldForUserName.getText());
             } catch (IOException | InterruptedException e) {
                 throw new RuntimeException(e);
             }
