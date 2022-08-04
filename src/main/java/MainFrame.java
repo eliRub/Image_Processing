@@ -44,7 +44,10 @@ public class MainFrame extends JFrame {
             try {
                 this.dispose();
                if(fieldForUserName.getText().equals("")){
-                   ErrorWindow errorWindow = new ErrorWindow("You need to put sum thing");
+                   Thread thread = new Thread(()->{
+                       ErrorWindow errorWindow = new ErrorWindow("You need to put sum thing");
+                   });
+                   thread.start();
                    return;
                }
                 MainFrame mainFrame = new MainFrame("https://www.facebook.com/"+fieldForUserName.getText());
@@ -68,7 +71,7 @@ public class MainFrame extends JFrame {
         AfterFilter = new ImageIcon((picture));
 
         JLabel original = new JLabel(new ImageIcon(picture));
-        original.setBounds(75 , 100 ,picture.getWidth(),picture.getHeight() );
+        original.setBounds(75 , 75 ,picture.getWidth(),picture.getHeight() );
         this.add(original);
 
         JButton button1 = createButton("Grayscale",fieldForUserName.getX(), search.getY()+search.getHeight()+20, search.getWidth()*2, search.getHeight()+1 , 1);
@@ -111,8 +114,7 @@ public class MainFrame extends JFrame {
 
     public void paint(Graphics g){
         super.paint(g);
-        g.drawImage(AfterFilter.getImage(),750,120,null);
-
+        g.drawImage(AfterFilter.getImage(),750,100,null);
     }
 
 
