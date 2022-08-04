@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class ErrorWindow extends JFrame {
 
@@ -6,7 +7,7 @@ public class ErrorWindow extends JFrame {
     public static final int WINDOW_HEIGHT = 250;
 
     public ErrorWindow(String str) {
-        Thread thread = new Thread(()->{
+//        Thread thread = new Thread(()->{
             this.setVisible(true);
             this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
             this.setLocationRelativeTo(null);
@@ -15,8 +16,10 @@ public class ErrorWindow extends JFrame {
             this.setLayout(null);
 
             JLabel label = new JLabel(str);
-            label.setBounds(10,75,350,50);
+            label.setBounds(10,75,450,30);
+            label.setFont(new Font("Arial", Font.BOLD, 20));
             this.add(label);
+
             try {
                 Thread.sleep(3000);
                 nextFunc();
@@ -24,7 +27,7 @@ public class ErrorWindow extends JFrame {
                 throw new RuntimeException(e);
             }
 
-        });thread.start();
+//        });thread.start();
 
     }
     public void nextFunc(){
