@@ -5,6 +5,7 @@ import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 
 import javax.swing.*;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,6 +19,17 @@ public class GetImage {
         ChromeDriver driver = new ChromeDriver();
         driver.get(Name);
         driver.manage().window().maximize();
+
+//        List<WebElement> links = driver.findElements(By.tagName("a"));
+//        System.out.println("\n \n \n \n links size are: " +links.size() +"\n\n\n");
+//        for (WebElement link : links) {
+//            String url = link.getAccessibleName();
+//            if (Objects.equals(url, "https://www.facebook.com/help") || Objects.equals(url, "https://he-il.facebook.com/,km.")|| Objects.equals(url, "/help/?ref=404") || Objects.equals(url, "/help/?ref=pf")) {
+//                ErrorWindow errorWindow = new ErrorWindow("You have entered an incorrect user name.");
+//                Thread.sleep(3000);
+//                driver.close();
+//            }
+//        }
 
         if (driver.getPageSource().contains("The link you followed may be broken, or the page may have been removed.") ||
                 driver.getPageSource().contains("You must log in to continue.")){

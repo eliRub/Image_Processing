@@ -7,7 +7,8 @@ public class ErrorWindow extends JFrame {
     public static final int WINDOW_HEIGHT = 250;
 
     public ErrorWindow(String str) {
-//        Thread thread = new Thread(()->{
+        Thread thread = new Thread(()->{
+
             this.setVisible(true);
             this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
             this.setLocationRelativeTo(null);
@@ -27,7 +28,7 @@ public class ErrorWindow extends JFrame {
                 throw new RuntimeException(e);
             }
 
-//        });thread.start();
+        });thread.start();
 
     }
     public void nextFunc(){
