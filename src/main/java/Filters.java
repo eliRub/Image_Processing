@@ -6,6 +6,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 public class Filters {
+
+    private static final int mostValueInRGB = 255;
+
     public Filters(BufferedImage image, int number, File output) throws IOException {
         Color color1;
         int width = image.getWidth();
@@ -28,7 +31,6 @@ public class Filters {
                     case 2 -> {
                         image1.setRGB(width - x - 1, y, color.getRGB());
                     }
-
                     case 3 -> {
                         color1 = colorShiftRight(color);
                         image1.setRGB(x, y, color1.getRGB());
@@ -100,8 +102,8 @@ public class Filters {
     }
     public static int intenseColor(int original, double by) {
         original *= by;
-        if (original > 255) {
-            original = 255;
+        if (original > mostValueInRGB) {
+            original = mostValueInRGB;
         }
         return original;
     }

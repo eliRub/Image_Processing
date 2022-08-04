@@ -4,9 +4,9 @@ public class ExplanationWindow extends JFrame {
 
     public static final int WINDOW_WIDTH = 450;
     public static final int WINDOW_HEIGHT = 250;
-    public static final int TEXT_HEIGHT = 30;
-    public static final int X = 30;
-    public static final int Y = 70;
+    private static final int TEXT_HEIGHT = 30;
+    private static final int X = 30;
+    private static final int Y = 70;
 
     public ExplanationWindow() {
 

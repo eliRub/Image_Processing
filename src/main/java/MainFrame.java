@@ -15,6 +15,7 @@ public class MainFrame extends JFrame {
     public URL url;
     public static final int WINDOW_WIDTH = 1200;
     public static final int WINDOW_HEIGHT = 600;
+
     public MainFrame(String name) throws IOException, InterruptedException {
         this.setBounds(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

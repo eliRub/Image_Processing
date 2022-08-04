@@ -10,8 +10,8 @@ import java.util.Objects;
 
 public class GetImage {
     public String imageUrl;
+    private static final int milliSecond = 1000;
     public GetImage(String Name) throws InterruptedException {
-
 
         System.setProperty(
                 "webdriver.chrome.driver",
@@ -30,7 +30,7 @@ public class GetImage {
             }
         }
 
-        Thread.sleep(2000);  // this is because sometimes the internet connection is unstable, so it's wait 2 second.
+        Thread.sleep(milliSecond*2);  // this is because sometimes the internet connection is unstable, so it's wait 2 second.
         List<WebElement> list = driver.findElements(By.tagName("image"));
         WebElement myImage = list.get(0);
         imageUrl = myImage.getAttribute("xlink:href");

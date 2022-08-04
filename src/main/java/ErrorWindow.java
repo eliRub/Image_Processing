@@ -5,11 +5,16 @@ public class ErrorWindow extends JFrame {
 
     public static final int WINDOW_WIDTH = 450;
     public static final int WINDOW_HEIGHT = 250;
-
+    private static final int X = 10;
+    private static final int Y = 80;
+    private static final int width = 400;
+    private static final int componentHeight = 30;
+    private static final int milliSecondTOSleep = 1000;
     public ErrorWindow(String str) {
        Thread thread = new Thread(()->{
         try {
-            Thread.sleep(2000);
+
+            Thread.sleep(milliSecondTOSleep* 2L);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -21,8 +26,8 @@ public class ErrorWindow extends JFrame {
         this.setLayout(null);
 
         JLabel label = new JLabel(str);
-        label.setBounds(10, 75, 400, 30);
-        label.setFont(new Font("Arial", Font.BOLD, 20));
+        label.setBounds(X, Y, width, componentHeight);
+        label.setFont(new Font("Arial", Font.BOLD, componentHeight-10));
         this.add(label);
 
         this.setVisible(true);
@@ -32,7 +37,7 @@ public class ErrorWindow extends JFrame {
     }
     public void nextFunc(){
         try {
-            Thread.sleep(5000);
+            Thread.sleep(milliSecondTOSleep* 3L);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

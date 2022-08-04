@@ -9,6 +9,10 @@ public class PanelWindow extends JPanel {
 
     public static final int WINDOW_WIDTH = 400;
     public static final int WINDOW_HEIGHT = 400;
+    private final int width = 150;
+    private final int componentHeight = 30;
+    private final int X = 120;
+    private final int Y = 15;
 
     public PanelWindow() {
         JFrame frame = new JFrame();
@@ -36,14 +40,14 @@ public class PanelWindow extends JPanel {
         this.setLayout(null);
 
         JButton text = new JButton("What to enter?");
-        text.setBounds(WINDOW_WIDTH/2-80, 15, 150, 30);
+        text.setBounds(X, Y, width, componentHeight);
         text.addActionListener((event) ->{
             ExplanationWindow explanationWindow = new ExplanationWindow();
         });
         this.add(text);
 
         fieldForUserName = new TextField();
-        fieldForUserName.setBounds((WINDOW_WIDTH/2)-100, text.getY()+text.getHeight()+20, 100, 30);
+        fieldForUserName.setBounds(text.getX()-20, text.getY()+text.getHeight()+20, text.getWidth()-50, componentHeight);
         this.add(fieldForUserName);
 
         search = new JButton("search");
@@ -57,7 +61,7 @@ public class PanelWindow extends JPanel {
                 if (str.length()!=0) {
                     MainFrame mainFrame = new MainFrame("https://www.facebook.com/" + str);
                 }else {
-                    ErrorWindow errorWindow = new ErrorWindow("You have to enter something");
+                    ErrorWindow errorWindow = new ErrorWindow("      You have to enter something!");
                 }
 
             } catch (IOException | InterruptedException e) {
