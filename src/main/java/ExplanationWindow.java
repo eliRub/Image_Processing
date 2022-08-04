@@ -30,5 +30,4 @@ public class ExplanationWindow extends JFrame {
         this.add(explain3);
         this.setVisible(true);
     }
-
 }

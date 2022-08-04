@@ -60,9 +60,7 @@ public class PanelWindow extends JPanel {
                     ErrorWindow errorWindow = new ErrorWindow("You need to put sum thing");
                 }
 
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            } catch (InterruptedException e) {
+            } catch (IOException | InterruptedException e) {
                 throw new RuntimeException(e);
             }
         });

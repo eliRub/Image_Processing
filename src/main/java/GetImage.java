@@ -5,7 +5,6 @@ import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 
 import javax.swing.*;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,29 +12,22 @@ public class GetImage {
     public String imageUrl;
     public GetImage(String Name) throws InterruptedException {
 
+
         System.setProperty(
                 "webdriver.chrome.driver",
-                "C:\\\\Users\\\\ELI\\\\Downloads\\\\chromedriver_win32\\\\chromedriver.exe");
+                "C:\\\\Users\\\\User\\\\Downloads\\\\chromedriver\\\\chromedriver.exe");
         ChromeDriver driver = new ChromeDriver();
         driver.get(Name);
         driver.manage().window().maximize();
 
-//        List<WebElement> links = driver.findElements(By.tagName("a"));
-//        System.out.println("\n \n \n \n links size are: " +links.size() +"\n\n\n");
-//        for (WebElement link : links) {
-//            String url = link.getAccessibleName();
-//            if (Objects.equals(url, "https://www.facebook.com/help") || Objects.equals(url, "https://he-il.facebook.com/,km.")|| Objects.equals(url, "/help/?ref=404") || Objects.equals(url, "/help/?ref=pf")) {
-//                ErrorWindow errorWindow = new ErrorWindow("You have entered an incorrect user name.");
-//                Thread.sleep(3000);
-//                driver.close();
-//            }
-//        }
-
-        if (driver.getPageSource().contains("The link you followed may be broken, or the page may have been removed.") ||
-                driver.getPageSource().contains("You must log in to continue.")){
-            ErrorWindow errorWindow = new ErrorWindow("You have entered an incorrect user name.");
-            Thread.sleep(3000);
-            driver.close();
+        List<WebElement> allLinks = driver.findElements(By.tagName("a"));
+        for (WebElement link: allLinks){
+            String str = link.getAttribute("href");
+            String helpLink = "https://www.facebook.com/help/?ref=pf";
+            if (str.equals(helpLink)){
+                ErrorWindow errorWindow = new ErrorWindow("You have entered an incorrect user name.");
+                driver.close();
+            }
         }
 
         Thread.sleep(2000);
@@ -58,5 +50,4 @@ public class GetImage {
         imageUrl = myImage.getAttribute("xlink:href");
         driver.close();
     }
-
 }
