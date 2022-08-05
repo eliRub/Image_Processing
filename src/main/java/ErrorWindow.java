@@ -36,7 +36,7 @@ public class ErrorWindow extends JFrame {
     }
     public void nextFunc(){
         try {
-            Thread.sleep(milliSecondTOSleep* 3L);
+            Thread.sleep(milliSecondTOSleep* 5L);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

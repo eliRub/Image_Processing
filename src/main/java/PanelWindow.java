@@ -61,7 +61,7 @@ public class PanelWindow extends JPanel {
                 if (str.length()!=0) {
                     MainFrame mainFrame = new MainFrame("https://www.facebook.com/" + str);
                 }else {
-                    ErrorWindow errorWindow = new ErrorWindow("      You have to enter something!");
+                    ErrorWindow errorWindow = new ErrorWindow("            You need to enter something!");
                 }
 
             } catch (IOException | InterruptedException e) {
