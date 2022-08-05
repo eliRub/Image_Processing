@@ -36,10 +36,10 @@ public class PanelWindow extends JPanel {
         this.setLayout(null);
 
         JButton text = new JButton("What to enter?");
-        int width = 150;
-        int componentHeight = 30;
-        int x = 120;
-        int y = 15;
+        final int width = 150;
+        final int componentHeight = 30;
+        final int x = 120;
+        final int y = 15;
         text.setBounds(x, y, width, componentHeight);
         text.addActionListener((event) ->{
             ExplanationWindow explanationWindow = new ExplanationWindow();
