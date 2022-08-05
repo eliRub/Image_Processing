@@ -1,5 +1,4 @@
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -28,9 +27,8 @@ public class Filters {
                         color1 = blackAndWhite(color);
                         image1.setRGB(x, y, color1.getRGB());
                     }
-                    case 2 -> {
-                        image1.setRGB(width - x - 1, y, color.getRGB());
-                    }
+                    case 2 -> image1.setRGB(width - x - 1, y, color.getRGB());
+
                     case 3 -> {
                         color1 = colorShiftRight(color);
                         image1.setRGB(x, y, color1.getRGB());

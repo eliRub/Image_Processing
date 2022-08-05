@@ -13,7 +13,6 @@ public class ErrorWindow extends JFrame {
     public ErrorWindow(String str) {
        Thread thread = new Thread(()->{
         try {
-
             Thread.sleep(milliSecondTOSleep* 2L);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);

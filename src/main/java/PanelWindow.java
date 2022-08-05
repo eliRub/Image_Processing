@@ -9,10 +9,6 @@ public class PanelWindow extends JPanel {
 
     public static final int WINDOW_WIDTH = 400;
     public static final int WINDOW_HEIGHT = 400;
-    private final int width = 150;
-    private final int componentHeight = 30;
-    private final int X = 120;
-    private final int Y = 15;
 
     public PanelWindow() {
         JFrame frame = new JFrame();
@@ -40,7 +36,11 @@ public class PanelWindow extends JPanel {
         this.setLayout(null);
 
         JButton text = new JButton("What to enter?");
-        text.setBounds(X, Y, width, componentHeight);
+        int width = 150;
+        int componentHeight = 30;
+        int x = 120;
+        int y = 15;
+        text.setBounds(x, y, width, componentHeight);
         text.addActionListener((event) ->{
             ExplanationWindow explanationWindow = new ExplanationWindow();
         });

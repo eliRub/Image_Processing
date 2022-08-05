@@ -1,10 +1,8 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 
-import javax.swing.*;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,7 +13,7 @@ public class GetImage {
 
         System.setProperty(
                 "webdriver.chrome.driver",
-                "C:\\\\Users\\\\ELI\\\\Downloads\\\\chromedriver_win32\\\\chromedriver.exe");
+                "C:\\\\Users\\\\User\\\\Downloads\\\\chromedriver\\\\chromedriver.exe");
         ChromeDriver driver = new ChromeDriver();
         driver.get(Name);
         driver.manage().window().maximize();
