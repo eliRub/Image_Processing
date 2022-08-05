@@ -11,27 +11,27 @@ public class ErrorWindow extends JFrame {
     private static final int componentHeight = 30;
     private static final int milliSecondTOSleep = 1000;
     public ErrorWindow(String str) {
-       Thread thread = new Thread(()->{
-        try {
-            Thread.sleep(milliSecondTOSleep* 2L);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Thread thread = new Thread(()->{
+            try {
+                Thread.sleep(milliSecondTOSleep* 2L);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
 
-        this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-        this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        this.setResizable(true);
-        this.setLayout(null);
+            this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+            this.setLocationRelativeTo(null);
+            this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            this.setResizable(true);
+            this.setLayout(null);
 
-        JLabel label = new JLabel(str);
-        label.setBounds(X, Y, width, componentHeight);
-        label.setFont(new Font("Arial", Font.BOLD, componentHeight-10));
-        this.add(label);
+            JLabel label = new JLabel(str);
+            label.setBounds(X, Y, width, componentHeight);
+            label.setFont(new Font("Arial", Font.BOLD, componentHeight-10));
+            this.add(label);
 
-        this.setVisible(true);
-        nextFunc();
-       });thread.start();
+            this.setVisible(true);
+            nextFunc();
+        });thread.start();
 
     }
     public void nextFunc(){

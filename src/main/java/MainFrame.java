@@ -44,10 +44,10 @@ public class MainFrame extends JFrame {
 
             try {
                 this.dispose();
-               if(fieldForUserName.getText().equals("")){
-                   ErrorWindow errorWindow = new ErrorWindow("You need to put sum thing");
-                   return;
-               }
+                if(fieldForUserName.getText().equals("")){
+                    ErrorWindow errorWindow = new ErrorWindow("You need to put sum thing");
+                    return;
+                }
                 MainFrame mainFrame = new MainFrame("https://www.facebook.com/"+fieldForUserName.getText());
             } catch (IOException | InterruptedException e) {
                 throw new RuntimeException(e);

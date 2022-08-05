@@ -39,7 +39,7 @@ public class ExplanationWindow extends JFrame {
                 throw new RuntimeException(e);
             }
         });thread.start();
-        
+
     }
     public void closeWindow(){
         this.dispose();

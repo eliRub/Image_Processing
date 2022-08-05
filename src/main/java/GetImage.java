@@ -40,8 +40,8 @@ public class GetImage {
         String url2 = driver.getCurrentUrl();
 
         if(Objects.equals(url1, url2)) {
-           ErrorWindow errorWindow = new ErrorWindow("There is no picture on this profile");
-           driver.close();
+            ErrorWindow errorWindow = new ErrorWindow("There is no picture on this profile");
+            driver.close();
         }
 
         imageUrl = myImage.getAttribute("xlink:href");
