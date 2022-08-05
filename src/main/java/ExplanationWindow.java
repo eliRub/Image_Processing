@@ -7,7 +7,7 @@ public class ExplanationWindow extends JFrame {
     private static final int TEXT_HEIGHT = 30;
     private static final int X = 30;
     private static final int Y = 70;
-    private static final int sec = 6000;
+    private static final int sec = 8000;
 
     public ExplanationWindow() {
 
@@ -23,7 +23,7 @@ public class ExplanationWindow extends JFrame {
 
             this.add(explain1);
 
-            JLabel explain2 = new JLabel( "after the https://he-il.facebook.com ");
+            JLabel explain2 = new JLabel( "after the -> https://he-il.facebook.com ");
             explain2.setBounds(X, Y, WINDOW_WIDTH, TEXT_HEIGHT);
             this.add(explain2);
 
