@@ -1,4 +1,3 @@
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -22,7 +21,6 @@ public class MainFrame extends JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setLayout(null);
-
 
         JButton text = new JButton("What to enter?");
         text.setBounds(WINDOW_WIDTH/2-80, 15, 150, 30);
@@ -52,7 +50,6 @@ public class MainFrame extends JFrame {
             } catch (IOException | InterruptedException e) {
                 throw new RuntimeException(e);
             }
-
         });
 
         GetImage getImage = new GetImage(name);
@@ -91,7 +88,6 @@ public class MainFrame extends JFrame {
         this.add(button6);
 
         this.setVisible(true);
-
 
     }
     public JButton createButton(String name, int x, int y, int width, int height , int numOfFilter){

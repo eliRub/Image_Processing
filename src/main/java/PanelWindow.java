@@ -1,4 +1,3 @@
-
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
@@ -6,7 +5,6 @@ import java.io.IOException;
 public class PanelWindow extends JPanel {
     public TextField fieldForUserName;
     public JButton search;
-
     public static final int WINDOW_WIDTH = 400;
     public static final int WINDOW_HEIGHT = 400;
 
@@ -17,6 +15,7 @@ public class PanelWindow extends JPanel {
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
+
         try {
             PanelWindow panelWindow = new PanelWindow(frame);
             frame.setVisible(true);
@@ -24,7 +23,6 @@ public class PanelWindow extends JPanel {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     public static void main(String[] args) {

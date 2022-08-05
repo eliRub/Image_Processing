@@ -44,5 +44,4 @@ public class ExplanationWindow extends JFrame {
     public void closeWindow(){
         this.dispose();
     }
-
 }

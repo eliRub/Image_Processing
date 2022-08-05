@@ -9,11 +9,12 @@ public class ErrorWindow extends JFrame {
     private static final int Y = 80;
     private static final int width = 400;
     private static final int componentHeight = 30;
-    private static final int milliSecondTOSleep = 1000;
+    private static final int milliSecondToSleep = 1000;
+
     public ErrorWindow(String str) {
         Thread thread = new Thread(()->{
             try {
-                Thread.sleep(milliSecondTOSleep* 2L);
+                Thread.sleep(milliSecondToSleep * 2L);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -31,12 +32,13 @@ public class ErrorWindow extends JFrame {
 
             this.setVisible(true);
             nextFunc();
-        });thread.start();
-
+        });
+        thread.start();
     }
+
     public void nextFunc(){
         try {
-            Thread.sleep(milliSecondTOSleep* 5L);
+            Thread.sleep(milliSecondToSleep * 5L);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
